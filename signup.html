@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+    <link rel="stylesheet" href="signin.css" />
+
+  </head>
+  <body>
+    <div class="form-con">
+      <h1>Sign Up Page</h1>
+      <form class="Reg-form" action="" id="Regform">
+          <div class="Address-info">
+          <input type="text" name="First Name" id="signInName" placeholder="Enter your first Name" required/>
+          <input type="email" name="email" id="signInEmail" placeholder="Enter you valid Email" required/>
+          <input type="password" name="password" id="signInPassword" placeholder="Enter your valid Password" required/>
+          <button id="signInbtn" onclick="formInput()">Sign Up</button>
+      </form>
+
+    </div>
+    <script>
+      // targeting form
+      let formDetails = document.getElementById("Regform");
+
+      formDetails.addEventListener("click", formInput);
+      function formInput(event) {
+        event.preventDefault();
+
+        // Collecting input value
+
+        let firstName = document.getElementById("signInName").value;
+        let emailAddress = document.getElementById("signInEmail").value;
+        let signInPassword = document.getElementById("signInPassword").value;
+
+        const signInDetails = {
+         firstName,
+          emailAddress,
+          signInPassword,
+
+        };
+        // console.log(signInDetails);
+
+        // Save to local storage
+
+        localStorage.setItem("UserData", JSON.stringify(signInDetails));
+        let Details = JSON.parse(localStorage.getItem("UserData"));
+        console.log(Details);
+      }
+    
+
+    </script>
+  </body>
+</html>
